@@ -13,11 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.javaflow.examples.common.lambdas;
+package org.apache.commons.javaflow.examples.lambdas;
 
 import org.apache.commons.javaflow.api.Continuation;
-import org.apache.commons.javaflow.extras.CloseableIterator;
-import org.apache.commons.javaflow.extras.Continuations;
+
+import net.tascalate.javaflow.util.CloseableIterator;
+import net.tascalate.javaflow.util.Continuations;
 
 public class LambdasExampleMinimalIterator {
 

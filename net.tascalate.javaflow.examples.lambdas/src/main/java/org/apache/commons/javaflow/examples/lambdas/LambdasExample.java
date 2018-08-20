@@ -13,18 +13,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.javaflow.examples.common.lambdas;
+package org.apache.commons.javaflow.examples.lambdas;
 
-import static org.apache.commons.javaflow.examples.common.lambdas.ContinuableAdapters.consumer;
-import static org.apache.commons.javaflow.examples.common.lambdas.ContinuableAdapters.runnable;
+import static org.apache.commons.javaflow.examples.lambdas.ContinuableAdapters.consumer;
+import static org.apache.commons.javaflow.examples.lambdas.ContinuableAdapters.runnable;
 
 import java.util.Arrays;
 import java.util.List;
 
+import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.api.ccs;
 import org.apache.commons.javaflow.api.continuable;
-import org.apache.commons.javaflow.api.Continuation;
-import org.apache.commons.javaflow.extras.Continuations;
+
+import net.tascalate.javaflow.util.Continuations;
 
 public class LambdasExample {
     public static void main(String[] argv) throws Exception {
@@ -69,8 +70,10 @@ public class LambdasExample {
         // for
         // definition of "consumer" & "forEach"
         List<String> listOfStrings = Arrays.asList("A", null, "B", null, "C");
-        Continuations.forEach(listOfStrings.stream().filter(s -> s != null).map(s -> s + s),
-                consumer(this::yieldString1).andThen(this::yieldString2));
+        Continuations.forEach$(
+            listOfStrings.stream().filter(s -> s != null).map(s -> s + s),
+            consumer(this::yieldString1).andThen(this::yieldString2)
+        );
 
     }
 

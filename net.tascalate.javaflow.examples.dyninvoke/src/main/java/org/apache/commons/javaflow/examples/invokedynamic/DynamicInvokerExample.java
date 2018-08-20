@@ -19,7 +19,8 @@ import java.net.URL;
 
 import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.providers.asm5.Asm5ResourceTransformationFactory;
-import org.apache.commons.javaflow.utils.ContinuationClassLoader;
+import org.apache.commons.javaflow.util.ContinuationClassLoader;
+
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
 

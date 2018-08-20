@@ -13,17 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.javaflow.examples.common.lambdas;
+package org.apache.commons.javaflow.examples.lambdas;
 
-import org.apache.commons.javaflow.extras.ContinuableConsumer;
+import org.apache.commons.javaflow.api.continuable;
 
-public class ContinuableAdapters {
-
-    public static MyContinuableRunnable runnable(MyContinuableRunnable o) {
-        return o;
-    }
-
-    public static <T> ContinuableConsumer<T> consumer(ContinuableConsumer<T> o) {
-        return o;
-    }
+interface MyContinuableRunnable extends Runnable {
+    @continuable void run();
 }

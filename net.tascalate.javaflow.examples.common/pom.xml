@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>net.tascalate.javaflow.examples</groupId>
 		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-		<version>2.3.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 		<relativePath>../</relativePath>
 	</parent>
 
@@ -21,12 +21,6 @@
 		<dependency>
 			<groupId>net.tascalate.javaflow</groupId>
 			<artifactId>net.tascalate.javaflow.api</artifactId>
-			<version>${tascalate.javaflow.version}</version>
-		</dependency>
-		<dependency>
-			<groupId>net.tascalate.javaflow</groupId>
-			<artifactId>net.tascalate.javaflow.extras</artifactId>
-			<version>${tascalate.javaflow.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

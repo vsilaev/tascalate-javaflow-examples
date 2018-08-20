@@ -13,10 +13,17 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.javaflow.examples.common.lambdas;
+package org.apache.commons.javaflow.examples.lambdas;
 
-import org.apache.commons.javaflow.api.continuable;
+import net.tascalate.javaflow.util.function.SuspendableConsumer;
 
-interface MyContinuableRunnable extends Runnable {
-    @continuable void run();
+public class ContinuableAdapters {
+
+    public static MyContinuableRunnable runnable(MyContinuableRunnable o) {
+        return o;
+    }
+
+    public static <T> SuspendableConsumer<T> consumer(SuspendableConsumer<T> o) {
+        return o;
+    }
 }
