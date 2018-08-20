@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<project name="org.apache.commons.javaflow.examples-dyninvoke" basedir="." default="all">
+<project name="org.apache.commons.javaflow.examples.dyninvoke" basedir="." default="all">
     <property name="src.dir"       value="src/main/java"/>
     <property name="build.dir"     value="target"/>
     <property name="classes.dir"   value="${build.dir}/classes"/>
