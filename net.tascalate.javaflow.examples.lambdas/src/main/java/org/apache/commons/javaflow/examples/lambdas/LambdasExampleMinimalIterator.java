@@ -40,7 +40,7 @@ public class LambdasExampleMinimalIterator {
         // use try-with-resources to close the coIterator 
         // (and hence terminate underlying continuation) 
         // in case of early exit
-        try (CloseableIterator<Integer> i = Continuations.iterate(cc)) {
+        try (CloseableIterator<Integer> i = Continuations.iteratorOf(cc)) {
             int c = 0;
             while (i.hasNext()) {
                 System.out.println("Interrupted " + i.next());

@@ -30,7 +30,10 @@ import net.tascalate.javaflow.util.Continuations;
 public class LambdasExample {
     public static void main(String[] argv) throws Exception {
         LambdasExample demo = new LambdasExample();
-        Continuations.execute(demo::runExamples, (String s) -> System.out.println("Interrupted " + s));
+        Continuations.forEach(
+            demo::runExamples, 
+            (String s) -> System.out.println("Interrupted " + s)
+        );
 
         System.out.println("===");
 

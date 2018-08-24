@@ -41,7 +41,7 @@ public class LambdasExampleMinimalStream {
         // use try-with-resources to close the stream 
         // (and hence terminate underlying continuation) 
         // in case of early exit
-        try (Stream<Integer> stream = Continuations.stream(cc)) {
+        try (Stream<Integer> stream = Continuations.streamOf(cc)) {
             Optional<Integer> firstDividableByThree = 
                 stream.peek(v -> System.out.println("Interrupted " + v))
                       .filter(v -> v% 3 == 0)
