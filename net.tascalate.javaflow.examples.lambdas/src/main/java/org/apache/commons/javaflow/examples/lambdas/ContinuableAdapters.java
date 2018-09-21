@@ -15,7 +15,7 @@
  */
 package org.apache.commons.javaflow.examples.lambdas;
 
-import net.tascalate.javaflow.util.function.SuspendableConsumer;
+import net.tascalate.javaflow.function.SuspendableConsumer;
 
 public class ContinuableAdapters {
 

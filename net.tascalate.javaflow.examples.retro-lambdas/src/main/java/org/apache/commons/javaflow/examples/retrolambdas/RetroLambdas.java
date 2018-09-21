@@ -2,18 +2,21 @@ package org.apache.commons.javaflow.examples.retrolambdas;
 
 import org.apache.commons.javaflow.api.continuable;
 
-import static net.tascalate.javaflow.util.Continuations.yield;
+import static net.tascalate.javaflow.Continuations.yield;
 
-import net.tascalate.javaflow.util.CloseableIterator;
-import net.tascalate.javaflow.util.Continuations;
+import java.util.stream.Stream;
+
+import net.tascalate.javaflow.CloseableIterator;
+import net.tascalate.javaflow.Continuations;
 
 public class RetroLambdas {
 
     public static void main(String[] argv) {
-        Continuations
-            .streamOf(RetroLambdas::produceStrings)
-            .map(s -> "Produced by method ref: " + s)
-            .forEach(System.out::println);
+        try (Stream<String> generator = Continuations.streamOf(RetroLambdas::produceStrings)) {
+            generator
+                .map(s -> "Produced by method ref: " + s)
+                .forEach(System.out::println);
+        }
         
         try (CloseableIterator<String> generator = Continuations.iteratorOf(() -> {
             yield( complexCalculation("1") );

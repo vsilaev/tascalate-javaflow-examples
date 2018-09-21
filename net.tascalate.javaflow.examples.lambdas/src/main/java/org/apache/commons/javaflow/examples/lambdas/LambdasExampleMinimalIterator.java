@@ -17,8 +17,8 @@ package org.apache.commons.javaflow.examples.lambdas;
 
 import org.apache.commons.javaflow.api.Continuation;
 
-import net.tascalate.javaflow.util.CloseableIterator;
-import net.tascalate.javaflow.util.Continuations;
+import net.tascalate.javaflow.CloseableIterator;
+import net.tascalate.javaflow.Continuations;
 
 public class LambdasExampleMinimalIterator {
 

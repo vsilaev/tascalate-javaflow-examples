@@ -3,7 +3,7 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.0.2-SNAPSHOT</version>
+	<version>1.0.2</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
@@ -64,7 +64,7 @@
 
 	<properties>
                 <tascalate.javaflow.version>2.3.2</tascalate.javaflow.version>
-                <tascalate.javaflow.util.version>1.1.1</tascalate.javaflow.util.version>
+                <tascalate.javaflow.extras.version>2.3.1</tascalate.javaflow.extras.version>
                 <asm.version>5.2</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -77,9 +77,9 @@
 				<version>${tascalate.javaflow.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>net.tascalate.javaflow.util</groupId>
-				<artifactId>net.tascalate.javaflow.util.lib</artifactId>
-				<version>${tascalate.javaflow.util.version}</version>
+				<groupId>net.tascalate.javaflow</groupId>
+				<artifactId>net.tascalate.javaflow.extras</artifactId>
+				<version>${tascalate.javaflow.extras.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>commons-logging</groupId>

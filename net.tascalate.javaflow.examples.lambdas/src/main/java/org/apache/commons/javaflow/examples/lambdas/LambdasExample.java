@@ -25,7 +25,7 @@ import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.api.ccs;
 import org.apache.commons.javaflow.api.continuable;
 
-import net.tascalate.javaflow.util.Continuations;
+import net.tascalate.javaflow.Continuations;
 
 public class LambdasExample {
     public static void main(String[] argv) throws Exception {

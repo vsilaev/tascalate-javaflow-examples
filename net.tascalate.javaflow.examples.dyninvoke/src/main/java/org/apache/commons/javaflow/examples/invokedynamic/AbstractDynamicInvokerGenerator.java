@@ -53,7 +53,8 @@ public abstract class AbstractDynamicInvokerGenerator {
             Handle bootstrap = new Handle(H_INVOKESTATIC, 
                                           dynamicLinkageClassName, 
                                           bootstrapMethodName,                   
-                                          DYNAMIC_BOOTSTRAP_METHOD_TYPE.toMethodDescriptorString());
+                                          DYNAMIC_BOOTSTRAP_METHOD_TYPE.toMethodDescriptorString(), 
+                                          false);
 
             int maxStackSize = addMethodParameters(mv);
             mv.visitInvokeDynamicInsn("runCalculation", targetMethodDescriptor, bootstrap);
