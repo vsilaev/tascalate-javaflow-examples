@@ -1,0 +1,60 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.tascalate.javaflow.examples</groupId>
+		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
+		<version>1.0.2</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<artifactId>net.tascalate.javaflow.examples.jee</artifactId>
+	<packaging>war</packaging>
+
+	<name>Tascalate JavaFlow Examples / Common</name>
+
+	<properties>
+		<license.header>../HEADER-ORIGINAL.txt</license.header>
+		<failOnMissingWebXml>false</failOnMissingWebXml>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.tascalate.javaflow</groupId>
+			<artifactId>net.tascalate.javaflow.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+	        <finalName>jee-continuations</finalName>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>net.tascalate.javaflow</groupId>
+				<artifactId>net.tascalate.javaflow.tools.maven</artifactId>
+				<dependencies>
+					<dependency>
+						<groupId>javax</groupId>
+						<artifactId>javaee-api</artifactId>
+						<version>7.0</version>
+						<scope>compile</scope>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>

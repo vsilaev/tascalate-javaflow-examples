@@ -59,11 +59,12 @@
 		<module>net.tascalate.javaflow.examples.dyninvoke</module>
 		<module>net.tascalate.javaflow.examples.cdi-weld</module>
 		<module>net.tascalate.javaflow.examples.cdi-owb</module>
+		<module>net.tascalate.javaflow.examples.jee</module>
 	</modules>
 
 
 	<properties>
-                <tascalate.javaflow.version>2.3.2</tascalate.javaflow.version>
+                <tascalate.javaflow.version>2.3.3-SNAPSHOT</tascalate.javaflow.version>
                 <tascalate.javaflow.extras.version>2.3.1</tascalate.javaflow.extras.version>
                 <asm.version>5.2</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
