@@ -21,7 +21,7 @@ public class NestedExample {
 
     public static void main(String[] argv) throws Exception {
 
-        for (Continuation cc = Continuation.startWith(new ExecutionOuter()); null != cc; cc = cc.resume()) {
+        for (Continuation cc = Continuation.startWith(new ExecutionOuter(), true); null != cc; cc = cc.resume()) {
             System.out.println("Interrupted " + cc.value());
         }
 

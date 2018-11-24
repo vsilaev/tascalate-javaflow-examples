@@ -36,7 +36,7 @@ public class LambdasExampleMinimalStream {
             } finally {
                 System.out.println("Continuation gracefully exited");
             }
-        });
+        }).optimized();
         
         // use try-with-resources to close the stream 
         // (and hence terminate underlying continuation) 

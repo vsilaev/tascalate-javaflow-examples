@@ -22,7 +22,7 @@ public class InheritanceExample {
 
 	public static void main(final String[] argv) throws Exception {
 	
-		for (Continuation cc = Continuation.startWith(new Execution()); null != cc; cc = cc.resume()) {
+		for (Continuation cc = Continuation.startWith(new Execution(), true); null != cc; cc = cc.resume()) {
 			System.out.println("Interrupted " + cc.value());
 		}
 		

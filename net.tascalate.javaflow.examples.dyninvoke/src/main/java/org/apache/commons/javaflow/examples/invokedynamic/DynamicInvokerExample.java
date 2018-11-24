@@ -32,7 +32,7 @@ public class DynamicInvokerExample {
         );
         Runnable demo = dynamicClass.newInstance();
 
-        for (Continuation cc = Continuation.startWith(demo); null != cc; cc = cc.resume()) {
+        for (Continuation cc = Continuation.startWith(demo, true); null != cc; cc = cc.resume()) {
             System.out.println("Interrupted " + cc.value());
         }
     }

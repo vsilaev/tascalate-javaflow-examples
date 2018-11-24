@@ -34,7 +34,7 @@ public class WeldApplication {
     public void run(@Observes ContainerInitialized event) {
         System.out.println("Execution is proxy? " + (execution instanceof ProxyObject));
         int i = 0;
-        for (Continuation cc = Continuation.startWith(execution); null != cc; cc = cc.resume(i += 100)) {
+        for (Continuation cc = Continuation.startWith(execution, true); null != cc; cc = cc.resume(i += 100)) {
             System.out.println("SUSPENDED " + cc.value());
         }
 

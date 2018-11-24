@@ -29,7 +29,7 @@ public class LambdasExampleMinimalLoop {
                 Continuation.suspend(i);
                 System.out.println("Exe after suspend");
             }
-        });
+        }, true);
 
         for (; null != cc; cc = cc.resume()) {
             System.out.println("Interrupted " + cc.value());

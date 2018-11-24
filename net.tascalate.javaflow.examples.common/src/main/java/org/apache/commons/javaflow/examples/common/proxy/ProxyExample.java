@@ -33,7 +33,7 @@ public class ProxyExample {
         System.out.println("======");
         
         Runnable runnable = new Invoker(execution);
-        for (Continuation cc = Continuation.startWith(runnable); null != cc;) {
+        for (Continuation cc = Continuation.startWith(runnable, true); null != cc;) {
             final String valueFromContinuation = String.class.cast(cc.value());
             System.out.println(">>Interrupted " + valueFromContinuation);
             // Let's continuation resume
