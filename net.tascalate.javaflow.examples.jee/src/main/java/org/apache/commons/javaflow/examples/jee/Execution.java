@@ -1,5 +1,5 @@
 /**
- * ﻿Copyright 2013-2017 Valery Silaev (http://vsilaev.com)
+ * ﻿Copyright 2013-2018 Valery Silaev (http://vsilaev.com)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -24,7 +24,7 @@ import org.apache.commons.javaflow.api.continuable;
 @Stateless
 @LocalBean
 public class Execution implements Runnable {
-
+    
     @Override
     public @continuable void run() {
         for (long i = 1; i <= 5; i++) {
