@@ -43,7 +43,7 @@ public class SerializationExample {
         System.out.println(y);
         System.out.println("Restored " + y.value());
         
-        Continuation next = y.optimized().resume(111);
+        Continuation next = y.singleShot().resume(111);
         System.out.print("Interrupted " + next.value());
     }
 }

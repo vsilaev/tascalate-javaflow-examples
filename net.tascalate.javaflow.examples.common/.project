@@ -2,7 +2,9 @@
 <projectDescription>
   <name>net.tascalate.javaflow.examples.common</name>
   <comment>Examples for Tascalate Continuations / CoRoutines library for Java 1.5 - 1.8. NO_M2ECLIPSE_SUPPORT: Project files created with the maven-eclipse-plugin are not supported in M2Eclipse.</comment>
-  <projects/>
+  <projects>
+    <project>net.tascalate.javaflow.api</project>
+  </projects>
   <buildSpec>
     <buildCommand>
       <name>org.eclipse.jdt.core.javabuilder</name>

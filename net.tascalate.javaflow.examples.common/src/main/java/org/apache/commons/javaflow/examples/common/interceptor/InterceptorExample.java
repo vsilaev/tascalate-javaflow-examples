@@ -22,7 +22,7 @@ public class InterceptorExample {
     public static void main(String[] argv) throws Exception {
 
         int i = 0;
-        for (Continuation cc = Continuation.startWith(new Execution(), true); null != cc; cc = cc.resume(i += 100)) {
+        for (Continuation cc = Continuation.startWith(new Execution()); null != cc; cc = cc.resume(i += 100)) {
             System.out.println("SUSPENDED " + cc.value());
         }
 

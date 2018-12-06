@@ -22,7 +22,7 @@ public class SimpleExample {
     public static void main(String[] argv) throws Exception {
 
         String[] strings = {"A", "B", "C"};
-        for (Continuation cc = Continuation.startWith(new Execution(), true); null != cc;) {
+        for (Continuation cc = Continuation.startWith(new Execution()); null != cc;) {
             final int valueFromContinuation = Number.class.cast(cc.value()).intValue();
             System.out.println("Interrupted " + valueFromContinuation);
             // Let's continuation resume

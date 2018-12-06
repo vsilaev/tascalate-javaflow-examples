@@ -35,7 +35,7 @@ public class LambdasExampleMinimalIterator {
             } finally {
                 System.out.println("Continuation gracefully exited");
             }
-        }).optimized();
+        }, true); // Single-shot for performance, single resume is used here
         
         // use try-with-resources to close the coIterator 
         // (and hence terminate underlying continuation) 

@@ -32,7 +32,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/net/tascalate/javaflow/net.tascalate.javaflow.api/2.3.2/net.tascalate.javaflow.api-2.3.2.jar" sourcepath="M2_REPO/net/tascalate/javaflow/net.tascalate.javaflow.api/2.3.2/net.tascalate.javaflow.api-2.3.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/openwebbeans/openwebbeans-se/2.0.5/openwebbeans-se-2.0.5.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/openwebbeans/openwebbeans-impl/2.0.5/openwebbeans-impl-2.0.5.jar"/>

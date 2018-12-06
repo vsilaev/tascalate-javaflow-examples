@@ -27,7 +27,6 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="var" path="M2_REPO/net/tascalate/javaflow/net.tascalate.javaflow.api/2.3.2/net.tascalate.javaflow.api-2.3.2.jar" sourcepath="M2_REPO/net/tascalate/javaflow/net.tascalate.javaflow.api/2.3.2/net.tascalate.javaflow.api-2.3.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2.jar" sourcepath="M2_REPO/commons-logging/commons-logging/1.2/commons-logging-1.2-sources.jar"/>
 	<classpathentry kind="var" path="M2_REPO/com/google/code/findbugs/jsr305/3.0.1/jsr305-3.0.1.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/jboss/weld/se/weld-se-shaded/3.0.4.Final/weld-se-shaded-3.0.4.Final.jar"/>
