@@ -32,6 +32,8 @@ public class SerializableExecution implements Runnable, Serializable {
             
             // FileOutputStream is not serializable, but var is out of scope
             // when suspending, so it doesn't causes problems
+            
+            // Seems that this works only with EJC compiler + Agent
             try (FileOutputStream oos = new FileOutputStream("./fake.txt")) {
                 oos.toString();
             } catch (IOException e) {

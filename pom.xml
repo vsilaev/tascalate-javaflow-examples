@@ -3,12 +3,12 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.0.4</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
 	<url>https://github.com/vsilaev/tascalate-javaflow-examples</url>
-	<description>Examples for Tascalate Continuations / CoRoutines library for Java 1.5 - 1.8</description>
+	<description>Examples for Tascalate Continuations / CoRoutines library for Java 1.6 - 11</description>
 
 	<licenses>
 		<license>
@@ -60,13 +60,15 @@
 		<module>net.tascalate.javaflow.examples.cdi-weld</module>
 		<module>net.tascalate.javaflow.examples.cdi-owb</module>
 		<module>net.tascalate.javaflow.examples.jee</module>
+		<!--
 		<module>net.tascalate.javaflow.examples.skynet</module>
+		-->
 	</modules>
 
 
 	<properties>
-                <tascalate.javaflow.version>2.4.0</tascalate.javaflow.version>
-                <tascalate.javaflow.extras.version>2.3.2</tascalate.javaflow.extras.version>
+                <tascalate.javaflow.version>2.5.0-SNAPSHOT</tascalate.javaflow.version>
+                <tascalate.javaflow.extras.version>2.3.3-SNAPSHOT</tascalate.javaflow.extras.version>
                 <asm.version>5.2</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -129,7 +131,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>2.10.4</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -195,7 +197,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.6.1</version>
+				<version>3.8.0</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -209,7 +211,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.19.1</version>
+				<version>2.22.1</version>
 				<configuration>
 					<includes>
 						<include>**/*TestSuite.java</include>
@@ -227,7 +229,7 @@
 				<plugin>
 					<groupId>net.orfjackal.retrolambda</groupId>
 					<artifactId>retrolambda-maven-plugin</artifactId>
-					<version>2.5.5</version>
+					<version>2.5.6</version>
 					<executions>
 						<execution>
 							<goals>

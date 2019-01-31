@@ -44,7 +44,7 @@ public class LambdasExampleMinimalStream {
         try (Stream<Integer> stream = Continuations.streamOf(cc)) {
             Optional<Integer> firstDividableByThree = 
                 stream.peek(v -> System.out.println("Interrupted " + v))
-                      .filter(v -> v% 3 == 0)
+                      .filter(v -> v % 3 == 0)
                       .findFirst()
                 ;
             System.out.println(firstDividableByThree);
