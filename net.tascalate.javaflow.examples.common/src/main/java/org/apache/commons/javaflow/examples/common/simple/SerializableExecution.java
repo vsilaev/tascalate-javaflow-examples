@@ -33,16 +33,23 @@ public class SerializableExecution implements Runnable, Serializable {
             // FileOutputStream is not serializable, but var is out of scope
             // when suspending, so it doesn't causes problems
             
-            // Seems that this works only with EJC compiler + Agent
-            try (FileOutputStream oos = new FileOutputStream("./fake.txt")) {
-                oos.toString();
-            } catch (IOException e) {
-                e.printStackTrace();
+            // Seems that without artificial "if" the code works only with EJC compiler + Agent
+            // Otherwise in bytecode "oos" variable scope is a whole "for" loop body
+            if (guardSerialization()) {
+                try (FileOutputStream oos = new FileOutputStream("./fake.txt")) {
+                    oos.toString();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
             
             Object fromCaller = Continuation.suspend(i);
             System.out.println("Exe after suspend: " + fromCaller);
         }
         
+    }
+    
+    private static boolean guardSerialization() {
+        return true;
     }
 }
