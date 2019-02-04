@@ -15,6 +15,7 @@
  */
 package org.apache.commons.javaflow.examples.common.simple;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.Serializable;
@@ -36,7 +37,7 @@ public class SerializableExecution implements Runnable, Serializable {
             // Seems that without artificial "if" the code works only with EJC compiler + Agent
             // Otherwise in bytecode "oos" variable scope is a whole "for" loop body
             if (guardSerialization()) {
-                try (FileOutputStream oos = new FileOutputStream("./fake.txt")) {
+                try (FileOutputStream oos = new FileOutputStream(File.createTempFile("tascalate", ".cfz"))) {
                     oos.toString();
                 } catch (IOException e) {
                     e.printStackTrace();
