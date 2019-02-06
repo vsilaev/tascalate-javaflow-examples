@@ -31,7 +31,7 @@
 		</dependency>
 		<dependency>
 			<groupId>net.tascalate.javaflow</groupId>
-			<artifactId>net.tascalate.javaflow.providers.asm5</artifactId>
+			<artifactId>net.tascalate.javaflow.providers.asmx</artifactId>
 			<version>${tascalate.javaflow.version}</version>
 		</dependency>
 		<dependency>

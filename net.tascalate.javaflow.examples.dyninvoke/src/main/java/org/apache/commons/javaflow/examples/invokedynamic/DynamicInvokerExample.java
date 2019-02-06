@@ -15,11 +15,9 @@
  */
 package org.apache.commons.javaflow.examples.invokedynamic;
 
-import java.net.URL;
-
 import org.apache.commons.javaflow.api.Continuation;
-import org.apache.commons.javaflow.providers.asm5.Asm5ResourceTransformationFactory;
-import org.apache.commons.javaflow.util.ContinuationClassLoader;
+import org.apache.commons.javaflow.providers.asmx.AsmxResourceTransformationFactory;
+import org.apache.commons.javaflow.tools.runtime.ContinuableClassLoader;
 
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
@@ -49,8 +47,8 @@ public class DynamicInvokerExample {
                 Type.getType(SimpleDynamicLinkage.class).getInternalName(), "bootstrapDynamic", "()V");
 
         @SuppressWarnings("resource")
-        ContinuationClassLoader delegateClassLoader = new ContinuationClassLoader(
-            new URL[] {}, DynamicInvokerExample.class.getClassLoader(), new Asm5ResourceTransformationFactory()
+        ContinuableClassLoader delegateClassLoader = new ContinuableClassLoader(
+            DynamicInvokerExample.class.getClassLoader(), new AsmxResourceTransformationFactory()
         );
 
         @SuppressWarnings("unchecked")

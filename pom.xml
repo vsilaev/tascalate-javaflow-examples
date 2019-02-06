@@ -69,7 +69,7 @@
 	<properties>
                 <tascalate.javaflow.version>2.5.0-SNAPSHOT</tascalate.javaflow.version>
                 <tascalate.javaflow.extras.version>2.3.3-SNAPSHOT</tascalate.javaflow.extras.version>
-                <asm.version>5.2</asm.version>
+                <asm.version>7.0</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
