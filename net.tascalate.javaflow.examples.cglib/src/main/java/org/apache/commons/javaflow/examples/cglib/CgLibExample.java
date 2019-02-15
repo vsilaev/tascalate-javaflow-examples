@@ -1,0 +1,202 @@
+/**
+ * ﻿Copyright 2013-2017 Valery Silaev (http://vsilaev.com)
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package org.apache.commons.javaflow.examples.cglib;
+
+import java.lang.reflect.Method;
+
+import java.net.URL;
+import java.net.URLClassLoader;
+
+import org.apache.commons.javaflow.api.Continuation;
+import org.apache.commons.javaflow.api.continuable;
+import org.apache.commons.javaflow.core.ContinuableProxy;
+import org.apache.commons.javaflow.core.CustomContinuableProxy;
+
+import net.sf.cglib.proxy.Callback;
+import net.sf.cglib.proxy.CallbackFilter;
+import net.sf.cglib.proxy.Enhancer;
+import net.sf.cglib.proxy.FixedValue;
+import net.sf.cglib.proxy.InvocationHandler;
+import net.sf.cglib.proxy.MethodInterceptor;
+import net.sf.cglib.proxy.MethodProxy;
+import net.sf.cglib.proxy.NoOp;
+import net.sf.cglib.proxy.Proxy;
+
+public class CgLibExample {
+
+    public static void main(String[] argv) throws Exception {
+        testPassThrougProxy();
+        testContinuableCglibProxy();
+        testContinuableCustomProxy();
+    }
+    
+    
+    public static void testPassThrougProxy() throws Exception {
+        System.out.println("==== PASS-THROUGH PROXY ====");
+        Enhancer enhancer = new Enhancer();
+        enhancer.setClassLoader(new URLClassLoader(new URL[0]));
+        enhancer.setSuperclass(Execution.class);
+        enhancer.setCallbackFilter(new CallbackFilter() {
+            @Override
+            public int accept(Method method) {
+                return "run".equals(method.getName()) ? 1 : 0;
+            }
+        });
+        enhancer.setCallbacks(new Callback[]{NoOp.INSTANCE, new MethodInterceptor() {
+            @Override
+            public Object intercept(Object obj,  java.lang.reflect.Method method, Object[] args, MethodProxy proxy) throws Throwable {
+                System.out.println(">>> Entering " + method);
+                // Call to continuable method in "pass-through" fashion
+                // It works as ordinal, no special handling necessary
+                Object result = proxy.invokeSuper(obj, args);
+                System.out.println("<<< Exiting " + method);
+                return result;
+            }
+  
+        }});
+        enhancer.setUseFactory(false);
+        Execution proxy = (Execution) enhancer.create();
+
+        String[] strings = {"A", "B", "C"};
+        for (Continuation cc = Continuation.startWith(proxy); null != cc;) {
+            final int valueFromContinuation = Number.class.cast(cc.value()).intValue();
+            System.out.println("Interrupted " + valueFromContinuation);
+            // Let's continuation resume
+            cc = cc.resume(strings[valueFromContinuation % strings.length]);
+        }
+        System.out.println("ALL DONE");        
+    }
+    
+    public static void testContinuableCglibProxy() throws Exception {
+        System.out.println("==== STANDARD  CONTINUABLE CGLIB PROXY ====");
+        MyInterface proxy = (MyInterface)Proxy.newProxyInstance(
+            new URLClassLoader(new URL[0]),
+            new Class[]{ MyInterface.class, ContinuableProxy.class /* Marker */ },
+            new InvocationHandler() {
+                @Override
+                public @continuable Object invoke(Object proxy, java.lang.reflect.Method method, Object[] args) throws Throwable {
+                    if (method.getDeclaringClass() == Object.class) {
+                        return method.invoke(this, args);
+                    }
+                    for (long i = 1; i <= 5; i++) { 
+                        System.out.println("Exe before suspend");
+                        Object fromCaller = Continuation.suspend(i);
+                        System.out.println("Exe after suspend: " + fromCaller);
+                    }
+                    return null;
+                }
+                
+                public String toString() {
+                    return "proxy-handler(" + getClass().getName() + ") @ " + System.identityHashCode(this);
+                }
+            }
+        );
+        
+        System.out.println(proxy.getClass());
+        System.out.println(proxy);
+        
+        class Runner implements Runnable {
+
+            @Override
+            public @continuable void run() {
+                System.out.println("IN");
+                proxy.process(10);
+                System.out.println("OUT");
+            }
+            
+            public String toString() {
+                return "runnable";
+            }
+            
+        }
+
+        long[] strings = {11, 22, 33};
+        for (Continuation cc = Continuation.startWith(new Runner()); null != cc;) {
+            final int valueFromContinuation = Number.class.cast(cc.value()).intValue();
+            System.out.println("Interrupted " + valueFromContinuation);
+            // Let's continuation resume
+            cc = cc.resume(strings[valueFromContinuation % strings.length]);
+        }
+
+        System.out.println("ALL DONE");        
+    }
+    
+    public static void testContinuableCustomProxy() throws Exception {
+        System.out.println("==== CUSTOM CONTINUABLE CGLIB PROXY ====");
+        
+        Enhancer enhancer = new Enhancer();
+        enhancer.setCallbackFilter(new CallbackFilter() {
+            @Override
+            public int accept(Method method) {
+                String name = method.getName();
+                switch (name) {
+                    case "process":              return 2; // Actual continuable method
+                    case "getInvocationHandler": return 1; // CustomContinuableProxy.getInvocationHandler
+                    default:                     return 0; // Methods inherited from Object
+                }
+            }
+        });
+        Callback continuableHandler = new InvocationHandler() {
+            @Override
+            public @continuable Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+                for (long i = 1; i <= 5; i++) { 
+                    System.out.println("Exe before suspend");
+                    Object fromCaller = Continuation.suspend(i);
+                    System.out.println("Exe after suspend: " + fromCaller);
+                }
+                return null;
+            }
+            
+            public String toString() {
+                return "invocation-handler(" + getClass().getName() + ") @ " + System.identityHashCode(this);
+            }
+        };
+        enhancer.setCallbacks(new Callback[] {NoOp.INSTANCE, (FixedValue)(() -> continuableHandler), continuableHandler}); 
+        enhancer.setSuperclass(Object.class);
+        enhancer.setInterfaces(new Class<?>[] {MyInterface.class, CustomContinuableProxy.class});
+        enhancer.setUseFactory(false);
+        
+        MyInterface proxy = (MyInterface) enhancer.create();
+        System.out.println(proxy.getClass());
+        System.out.println(proxy);
+        
+        class Runner implements Runnable {
+
+            @Override
+            public @continuable void run() {
+                System.out.println("IN");
+                proxy.process(10);
+                System.out.println("OUT");
+            }
+            
+            public String toString() {
+                return "runnable";
+            }
+            
+        }
+
+        long[] strings = {11, 22, 33};
+        for (Continuation cc = Continuation.startWith(new Runner()); null != cc;) {
+            final int valueFromContinuation = Number.class.cast(cc.value()).intValue();
+            System.out.println("Interrupted " + valueFromContinuation);
+            // Let's continuation resume
+            cc = cc.resume(strings[valueFromContinuation % strings.length]);
+        }
+
+        System.out.println("ALL DONE");        
+    }
+
+}

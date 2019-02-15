@@ -57,6 +57,7 @@
 		<module>net.tascalate.javaflow.examples.lambdas</module>
 		<module>net.tascalate.javaflow.examples.retro-lambdas</module>
 		<module>net.tascalate.javaflow.examples.dyninvoke</module>
+		<module>net.tascalate.javaflow.examples.cglib</module>
 		<module>net.tascalate.javaflow.examples.cdi-weld</module>
 		<module>net.tascalate.javaflow.examples.cdi-owb</module>
 		<module>net.tascalate.javaflow.examples.jee</module>
