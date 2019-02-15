@@ -37,6 +37,14 @@ import net.sf.cglib.proxy.Proxy;
 
 public class CgLibExample {
 
+    static class Inner {
+        @continuable void call(String s) {
+            System.out.println("INNER BEFORE:: " + s);
+            Continuation.suspend(111);
+            System.out.println("INNER AFTER:: " + s);
+        }
+    }
+    
     public static void main(String[] argv) throws Exception {
         testPassThrougProxy();
         testContinuableCglibProxy();
@@ -91,12 +99,16 @@ public class CgLibExample {
                     if (method.getDeclaringClass() == Object.class) {
                         return method.invoke(this, args);
                     }
+                    run();
+                    return null;
+                }
+                
+                @continuable void run() {
                     for (long i = 1; i <= 5; i++) { 
                         System.out.println("Exe before suspend");
                         Object fromCaller = Continuation.suspend(i);
                         System.out.println("Exe after suspend: " + fromCaller);
                     }
-                    return null;
                 }
                 
                 public String toString() {
@@ -152,12 +164,18 @@ public class CgLibExample {
         Callback continuableHandler = new InvocationHandler() {
             @Override
             public @continuable Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                for (long i = 1; i <= 5; i++) { 
-                    System.out.println("Exe before suspend");
-                    Object fromCaller = Continuation.suspend(i);
-                    System.out.println("Exe after suspend: " + fromCaller);
-                }
+                run(Number.class.cast(args[0]).intValue());
                 return null;
+            }
+            
+            @continuable void run(int count) {
+                Inner inner = new Inner();
+                for (long i = 1; i <= count; i++) { 
+                    System.out.println("Exe before suspend");
+                    Object fromCaller = Continuation.suspend(i - 1);
+                    System.out.println("Exe after suspend: " + fromCaller);
+                    inner.call("INT " + i);
+                }                
             }
             
             public String toString() {

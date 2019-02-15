@@ -20,11 +20,11 @@ import java.lang.reflect.Proxy;
 import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.api.continuable;
 
-public class ProxyExample {
+public class PassThroughProxyExample {
 
     public static void main(String[] args) {
         Execution execution = (Execution) Proxy.newProxyInstance(
-            ProxyExample.class.getClassLoader(), 
+            PassThroughProxyExample.class.getClassLoader(), 
             new Class<?>[]{Execution.class}, 
             new LoggingInvocationHandler(new TargetClass()));
         

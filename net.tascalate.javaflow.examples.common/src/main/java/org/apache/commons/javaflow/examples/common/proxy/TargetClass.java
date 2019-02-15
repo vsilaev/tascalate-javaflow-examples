@@ -30,7 +30,7 @@ public class TargetClass implements Execution {
     
     protected @continuable void innerCall(String s) {
         NestedInterface callable = (NestedInterface) Proxy.newProxyInstance(
-            ProxyExample.class.getClassLoader(), 
+            PassThroughProxyExample.class.getClassLoader(), 
             new Class<?>[]{NestedInterface.class}, 
             new LoggingInvocationHandler(new NestedClass(s)));
         callable.call();

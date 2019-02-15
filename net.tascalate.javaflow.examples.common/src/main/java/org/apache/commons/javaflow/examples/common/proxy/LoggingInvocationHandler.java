@@ -20,8 +20,6 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.Objects;
 
-import org.apache.commons.javaflow.api.InterceptorSupport;
-
 public class LoggingInvocationHandler implements InvocationHandler {
     
     final private Object delegate;
@@ -54,15 +52,9 @@ public class LoggingInvocationHandler implements InvocationHandler {
             }
         } else {
             System.out.println("::Entering method " + method + " of " + delegate);
-            // Need to balance reference stack due to intermediate
-            // non-continuable calls
-            InterceptorSupport.beforeExecution(delegate);
             try {
                 return method.invoke(delegate, args);
             } finally {
-                // Need to balance reference stack due to intermediate
-                // non-continuable calls, pass proxied target
-                InterceptorSupport.afterExecution(proxy);
                 System.out.println("::Exiting method " + method + " of " + delegate);
             }
         }
