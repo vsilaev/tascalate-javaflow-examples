@@ -118,6 +118,7 @@ public class CgLibExample {
         );
         
         System.out.println(proxy.getClass());
+        System.out.println(proxy.getClass().getSuperclass());
         System.out.println(proxy);
         
         class Runner implements Runnable {

@@ -24,16 +24,18 @@ public class ContinuableProxyExample {
                     }
                     return method.invoke(this, args);
                 }
-                
-
-                run("V");
+                for (String s : new String[] {"A", "B", "C"}) {
+                    Continuation.suspend(s);
+                }
+                // For some unknown error it's impossible to invoke
+                // another continuable object right here
+                // but call via own method works (!!!)
+                // Pretty insane...
+                run("V"); 
                 return null;
             }
             
             @continuable void run(String prefix) {
-                for (String s : new String[] {"A", "B", "C"}) {
-                    Continuation.suspend(prefix + s);
-                }
                 for (String s : new String[] {"X", "Y", "Z"}) {
                     NestedClass inner = new NestedClass(prefix + s);
                     inner.call();
