@@ -53,7 +53,9 @@ public class DynamicInvokerExample {
 
         @SuppressWarnings("unchecked")
         Class<Runnable> dynamicClass = (Class<Runnable>) delegateClassLoader.defineClassFromData(
-            dynamicClassBytes, dynamicInvokerClassName
+            dynamicClassBytes, 
+            dynamicInvokerClassName.replace('/', '.'), // may be just null
+            SimpleDynamicLinkage.class.getProtectionDomain()
         );
         return dynamicClass;
     }

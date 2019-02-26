@@ -3,18 +3,14 @@ package org.apache.commons.javaflow.examples.trampoline;
 import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.api.continuable;
 import org.apache.commons.javaflow.providers.asmx.AsmxResourceTransformationFactory;
-import org.apache.commons.javaflow.spi.ResourceTransformationFactory;
-import org.apache.commons.javaflow.tools.runtime.ApplicationLoader;
+import org.apache.commons.javaflow.tools.runtime.ApplicationWeaver;
 
 public class SelfStartingApplication {
     
     public @continuable static void main(String[] argv) {
-        ResourceTransformationFactory factory = new AsmxResourceTransformationFactory();
-        if (ApplicationLoader.trampoline(factory, SelfStartingApplication.class, argv)) {
+        if (ApplicationWeaver.bootstrap(new AsmxResourceTransformationFactory(), true, argv)) {
             System.out.println("Application was forked in continuations-enabled mode, this method is exiting");
             return;
-        } else {
-            System.out.println("Resuming application in continuations-enabled mode, this method is continuing...");
         }
         
         String[] strings = {"A", "B", "C"};
@@ -26,5 +22,11 @@ public class SelfStartingApplication {
         }
 
         System.out.println("ALL DONE");
+    }
+    
+    static {
+        // Just to show that initialization happens twice
+        // and should be avoided if costly
+        System.out.println("Class is initialized " + SelfStartingApplication.class.getClassLoader());
     }
 }
