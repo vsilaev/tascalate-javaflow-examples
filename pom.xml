@@ -54,6 +54,7 @@
 
 	<modules>
 		<module>net.tascalate.javaflow.examples.common</module>
+		<module>net.tascalate.javaflow.examples.trampoline</module>
 		<module>net.tascalate.javaflow.examples.lambdas</module>
 		<module>net.tascalate.javaflow.examples.retro-lambdas</module>
 		<module>net.tascalate.javaflow.examples.dyninvoke</module>
