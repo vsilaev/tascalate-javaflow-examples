@@ -46,7 +46,7 @@ public class DynamicInvokerExample {
         byte[] dynamicClassBytes = generator.generateInvokeDynamicRunnable(dynamicInvokerClassName,
                 Type.getType(SimpleDynamicLinkage.class).getInternalName(), "bootstrapDynamic", "()V");
 
-        @SuppressWarnings("resource")
+        @SuppressWarnings("resource") 
         ContinuableClassLoader delegateClassLoader = new ContinuableClassLoader(
             DynamicInvokerExample.class.getClassLoader(), new AsmxResourceTransformationFactory()
         );
