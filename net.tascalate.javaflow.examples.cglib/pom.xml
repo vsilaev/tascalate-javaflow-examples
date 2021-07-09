@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>net.tascalate.javaflow.examples</groupId>
 		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-		<version>1.0.7</version>
+		<version>1.0.8</version>
 		<relativePath>../</relativePath>
 	</parent>
 
@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>3.2.10</version>
+			<version>3.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

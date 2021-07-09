@@ -3,7 +3,7 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.0.7</version>
+	<version>1.0.8</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
@@ -59,7 +59,8 @@
 		<module>net.tascalate.javaflow.examples.retro-lambdas</module>
 		<module>net.tascalate.javaflow.examples.dyninvoke</module>
 		<module>net.tascalate.javaflow.examples.cglib</module>
-		<module>net.tascalate.javaflow.examples.cdi-weld</module>
+		<module>net.tascalate.javaflow.examples.cdi-weld3</module>
+		<module>net.tascalate.javaflow.examples.cdi-weld4</module>
 		<module>net.tascalate.javaflow.examples.cdi-owb</module>
 		<module>net.tascalate.javaflow.examples.jee</module>
 		<!--
@@ -69,9 +70,9 @@
 
 
 	<properties>
-                <tascalate.javaflow.version>2.6.1</tascalate.javaflow.version>
+                <tascalate.javaflow.version>2.6.2</tascalate.javaflow.version>
                 <tascalate.javaflow.extras.version>2.4.1</tascalate.javaflow.extras.version>
-                <asm.version>7.1</asm.version>
+                <asm.version>9.2</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 

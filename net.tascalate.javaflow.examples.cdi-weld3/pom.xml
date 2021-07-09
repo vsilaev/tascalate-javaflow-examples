@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.tascalate.javaflow.examples</groupId>
+		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
+		<version>1.0.8</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<artifactId>net.tascalate.javaflow.examples.cdi-weld3</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Tascalate JavaFlow Examples / CDI Weld 2.X.X-3.X.X</name> 
+
+	<properties>
+		<license.header>../HEADER-ORIGINAL.txt</license.header>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.tascalate.javaflow</groupId>
+			<artifactId>net.tascalate.javaflow.api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.google.code.findbugs</groupId>
+			<artifactId>jsr305</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>org.jboss.weld.se</groupId>
+			<artifactId>weld-se-shaded</artifactId>
+			<version>3.1.7.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+			</plugin>
+			<plugin>
+				<groupId>net.tascalate.javaflow</groupId>
+				<artifactId>net.tascalate.javaflow.tools.maven</artifactId>
+			</plugin>
+		</plugins>
+	</build>
+</project>
