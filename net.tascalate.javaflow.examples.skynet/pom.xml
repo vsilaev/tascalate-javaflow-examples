@@ -4,14 +4,14 @@
 	<parent>
 		<groupId>net.tascalate.javaflow.examples</groupId>
 		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-		<version>1.0.9</version>
+		<version>1.0.4</version>
 		<relativePath>../</relativePath>
 	</parent>
 
-	<artifactId>net.tascalate.javaflow.examples.lambdas</artifactId>
+	<artifactId>net.tascalate.javaflow.examples.skynet</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Tascalate JavaFlow Examples / Lambdas</name>
+	<name>Tascalate JavaFlow Examples / Common</name>
 
 	<properties>
 		<license.header>../HEADER-ORIGINAL.txt</license.header>
@@ -21,10 +21,6 @@
 		<dependency>
 			<groupId>net.tascalate.javaflow</groupId>
 			<artifactId>net.tascalate.javaflow.api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>net.tascalate.javaflow</groupId>
-			<artifactId>net.tascalate.javaflow.extras</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>
