@@ -5,9 +5,6 @@
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/webapp"/>
-        <dependent-module archiveName="net.tascalate.javaflow.api-2.6.2.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/net.tascalate.javaflow.api/net.tascalate.javaflow.api">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="context-root" value="jee-continuations"/>
         <property name="java-output-path" value="/net.tascalate.javaflow.examples.jee/target/classes"/>
     </wb-module>
