@@ -3,7 +3,7 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.0.10</version>
+	<version>1.1.0</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
@@ -70,8 +70,8 @@
 
 
 	<properties>
-                <tascalate.javaflow.version>2.6.2</tascalate.javaflow.version>
-                <tascalate.javaflow.extras.version>2.4.1</tascalate.javaflow.extras.version>
+                <tascalate.javaflow.version>2.7.0</tascalate.javaflow.version>
+                <tascalate.javaflow.extras.version>2.4.2</tascalate.javaflow.extras.version>
                 <asm.version>9.2</asm.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
@@ -140,7 +140,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.0.1</version>
+						<version>3.2.1</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -153,7 +153,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.1.0-SNAPSHOT</version>
+						<version>3.3.1</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -170,7 +170,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>1.6</version>
+						<version>3.0.1</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -223,7 +223,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.8.0</version>
+				<version>3.8.1</version>
 				<configuration>
 					<source>1.8</source>
 					<target>1.8</target>
@@ -232,12 +232,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.3.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>3.3.2</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.1</version>
+				<version>2.22.2</version>
 				<configuration>
 					<includes>
 						<include>**/*TestSuite.java</include>
