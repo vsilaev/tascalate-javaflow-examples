@@ -20,7 +20,7 @@ public class SkynetSuspend implements Runnable {
     }
     
     static Continuation runOnce() {
-        Continuation c = Continuation.startWith(new FiberSuspend(0, 1_000_000, 10));
+        Continuation c = Continuation.startWith(new FiberSuspend(0, 1000000, 10));
         c.value();
         return c;
     }
@@ -31,7 +31,7 @@ public class SkynetSuspend implements Runnable {
     }
 
     public void run() {
-        Continuation c = Continuation.startWith(new FiberSuspend(0, 1_000_000, 10));
+        Continuation c = Continuation.startWith(new FiberSuspend(0, 1000000, 10));
         c.value();
     }
 }

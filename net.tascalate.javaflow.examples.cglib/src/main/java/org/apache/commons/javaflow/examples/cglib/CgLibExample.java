@@ -90,7 +90,7 @@ public class CgLibExample {
     
     public static void testContinuableCglibProxy() throws Exception {
         System.out.println("==== STANDARD  CONTINUABLE CGLIB PROXY ====");
-        MyInterface proxy = (MyInterface)Proxy.newProxyInstance(
+        final MyInterface proxy = (MyInterface)Proxy.newProxyInstance(
             new URLClassLoader(new URL[0]),
             new Class[]{ MyInterface.class, ContinuableProxy.class /* Marker */ },
             new InvocationHandler() {
@@ -155,14 +155,16 @@ public class CgLibExample {
             @Override
             public int accept(Method method) {
                 String name = method.getName();
-                switch (name) {
-                    case "process":              return 2; // Actual continuable method
-                    case "getInvocationHandler": return 1; // CustomContinuableProxy.getInvocationHandler
-                    default:                     return 0; // Methods inherited from Object
+                if ("process".equals(name)) {
+                    return 2; // Actual continuable method
+                } else if ("getInvocationHandler".equals(name)) {
+                    return 1; // CustomContinuableProxy.getInvocationHandler
+                } else {
+                    return 0; // Methods inherited from Object
                 }
             }
         });
-        Callback continuableHandler = new InvocationHandler() {
+        final Callback process = new InvocationHandler() {
             @Override
             public @continuable Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
                 run(Number.class.cast(args[0]).intValue());
@@ -183,12 +185,17 @@ public class CgLibExample {
                 return "invocation-handler(" + getClass().getName() + ") @ " + System.identityHashCode(this);
             }
         };
-        enhancer.setCallbacks(new Callback[] {NoOp.INSTANCE, (FixedValue)(() -> continuableHandler), continuableHandler}); 
+        Callback getInvocationHandler = new FixedValue() {
+            public Object loadObject() {
+                return process;
+            }
+        };
+        enhancer.setCallbacks(new Callback[] {NoOp.INSTANCE /* Object methods */, getInvocationHandler, process}); 
         enhancer.setSuperclass(Object.class);
         enhancer.setInterfaces(new Class<?>[] {MyInterface.class, CustomContinuableProxy.class});
         enhancer.setUseFactory(false);
         
-        MyInterface proxy = (MyInterface) enhancer.create();
+        final MyInterface proxy = (MyInterface) enhancer.create();
         System.out.println(proxy.getClass());
         System.out.println(proxy);
         

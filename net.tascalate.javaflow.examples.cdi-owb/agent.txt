@@ -1,1 +1,1 @@
--javaagent:../javaflow.instrument-continuations.jar  -javaagent:../javaflow.instrument-cdi-proxy.jar
+-javaagent:../javaflow.instrument-continuations.jar  -javaagent:../javaflow.instrument-proxies.jar

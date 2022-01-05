@@ -8,8 +8,8 @@ import java.util.Random;
 
 public class Stateloop {
 
-    private static int N = 1_000_000;
-    private static int NRecursive = 1_000;
+    private static int N = 1000000;
+    private static int NRecursive = 1000;
 
     // The work in this function is taken from:
     // https://github.com/puniverse/quasar/blob/master/quasar-core/src/jmh/java/co/paralleluniverse/fibers/FiberOverheadJMHBenchmark.java

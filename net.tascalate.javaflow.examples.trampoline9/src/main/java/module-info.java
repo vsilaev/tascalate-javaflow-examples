@@ -13,19 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.apache.commons.javaflow.examples.trampoline;
-
-import org.apache.commons.javaflow.api.Continuation;
-import org.apache.commons.javaflow.api.continuable;
-
-public class Execution implements Runnable {
-
-    @Override
-    public @continuable void run() {
-        for (long i = 0; i <= 5; i++) {
-            System.out.println("Exe before suspend");
-            Object fromCaller = Continuation.suspend(i);
-            System.out.println("Exe after suspend: " + fromCaller);
-        }
-    }
+module net.tascalate.javaflow.examples.trampoline {
+    requires net.tascalate.javaflow.api;
+    requires net.tascalate.javaflow.tools.runtime;
+    requires net.tascalate.javaflow.providers.asmx;
+    
+    // The package MUST be opened unconditionally for unnamed modules
+    // Otherwise after the trampoline execution it will not be accessible
+    // by the trampolined classes (loaded to the unnamed module of the
+    // ContinuableClassLoader)
+    opens org.apache.commons.javaflow.examples.modular_package;
 }

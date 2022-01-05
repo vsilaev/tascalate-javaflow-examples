@@ -30,14 +30,20 @@ public class SerializationExample {
         System.out.println("Interrupted " + x.value());
         
         ByteArrayOutputStream bos = new ByteArrayOutputStream();
-        try (ObjectOutputStream oos = new ObjectOutputStream(bos)) {
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        try {
             oos.writeObject(x);
+        } finally {
+            if (oos != null) { oos.close(); }
         }
         
         Continuation y;
         ByteArrayInputStream bis = new ByteArrayInputStream(bos.toByteArray());
-        try (ObjectInputStream iis = new ObjectInputStream(bis)) {
+        ObjectInputStream iis = new ObjectInputStream(bis);
+        try {
             y = (Continuation)iis.readObject();
+        } finally {
+            if (iis != null) { iis.close(); }
         }
         
         System.out.println(y);

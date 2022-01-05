@@ -40,8 +40,8 @@ public class SelfStartingApplication {
     }
     
     static {
-        // Just to show that initialization happens twice
+        // Just to show that initialization happens twice 
         // and should be avoided if costly
-        System.out.println("Class is initialized " + SelfStartingApplication.class.getClassLoader());
+        System.out.println("Class is initialized, ClassLoader = " + SelfStartingApplication.class.getClassLoader());
     }
 }

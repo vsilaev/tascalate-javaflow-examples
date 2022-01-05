@@ -37,8 +37,13 @@ public class SerializableExecution implements Runnable, Serializable {
             // Seems that without artificial "if" the code works only with EJC compiler + Agent
             // Otherwise in bytecode "oos" variable scope is a whole "for" loop body
             if (guardSerialization()) {
-                try (FileOutputStream oos = new FileOutputStream(File.createTempFile("tascalate", ".cfz"))) {
-                    oos.toString();
+                try {
+                FileOutputStream oos = new FileOutputStream(File.createTempFile("tascalate", ".cfz"));
+                    try {
+                        oos.toString();
+                    } finally {
+                        oos.close();
+                    }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

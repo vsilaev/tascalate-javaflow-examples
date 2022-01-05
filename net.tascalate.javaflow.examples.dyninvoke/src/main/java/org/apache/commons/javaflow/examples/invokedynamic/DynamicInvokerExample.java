@@ -28,7 +28,7 @@ public class DynamicInvokerExample {
         Class<Runnable> dynamicClass = generateDynamicInvokerClass(
             "org/apache/commons/javaflow/examples/invokedynamic/SimpleDynamicInvoker"
         );
-        Runnable demo = dynamicClass.newInstance();
+        Runnable demo = dynamicClass.getDeclaredConstructor().newInstance();
 
         for (Continuation cc = Continuation.startWith(demo, true); null != cc; cc = cc.resume()) {
             System.out.println("Interrupted " + cc.value());
@@ -46,7 +46,6 @@ public class DynamicInvokerExample {
         byte[] dynamicClassBytes = generator.generateInvokeDynamicRunnable(dynamicInvokerClassName,
                 Type.getType(SimpleDynamicLinkage.class).getInternalName(), "bootstrapDynamic", "()V");
 
-        @SuppressWarnings("resource") 
         ContinuableClassLoader delegateClassLoader = new ContinuableClassLoader(
             DynamicInvokerExample.class.getClassLoader(), new AsmxResourceTransformationFactory()
         );

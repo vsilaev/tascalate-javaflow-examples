@@ -6,7 +6,7 @@ public class Skynet implements Runnable {
 
     public static void main(String[] argv) {
         Long before = System.currentTimeMillis();
-        System.out.println(skynet(1_000_000));
+        System.out.println(skynet(1000000));
         Long after = System.currentTimeMillis();
         System.out.println(after - before + "ms");
     }
@@ -19,7 +19,7 @@ public class Skynet implements Runnable {
     }
 
     public void run() {
-        skynet(1_000_000);
+        skynet(1000000);
     }
 }
 

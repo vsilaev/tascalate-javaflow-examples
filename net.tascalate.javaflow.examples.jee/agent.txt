@@ -7,7 +7,7 @@ set "JAVA_OPTS=%JAVA_OPTS% -Djboss.modules.system.pkgs=org.jboss.byteman,org.jbo
 set "JAVA_OPTS=%JAVA_OPTS% -Xbootclasspath/p:[WILDFLY_HOME]/modules/system/layers/base/org/jboss/logmanager/main/jboss-logmanager-[VERSION].jar"
 
 -- ADD Agents (javaflow.instrument-continuations.jar is only necessary if you plan to use run-time enhancement or continuable Java8 lambdas)
-set "JAVA_OPTS=%JAVA_OPTS% -javaagent:../agents/javaflow.instrument-cdi-proxy.jar -javaagent:../agents/javaflow.instrument-continuations.jar"
+set "JAVA_OPTS=%JAVA_OPTS% -javaagent:../agents/javaflow.instrument-proxies.jar -javaagent:../agents/javaflow.instrument-continuations.jar"
 
 Invoke REST API as
 http://localhost:8080/jee-continuations/services/simple/NHL
