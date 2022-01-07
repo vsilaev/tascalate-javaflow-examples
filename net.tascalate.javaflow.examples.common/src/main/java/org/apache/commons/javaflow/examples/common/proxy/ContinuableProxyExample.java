@@ -64,7 +64,7 @@ public class ContinuableProxyExample {
         };
         
         ContinuableRunnable execution = (ContinuableRunnable) Proxy.newProxyInstance(
-                PassThroughProxyExample.class.getClassLoader(), 
+                ContinuableProxyExample.class.getClassLoader(), 
                 new Class<?>[]{ContinuableRunnable.class, ContinuableProxy.class /* Mandatory marker interface */}, 
                 continuableHandler);
         

@@ -7,11 +7,11 @@
     <property name="jar.dir"       value="${build.dir}/jar"/>
     <property name="i-jar.dir"     value="${build.dir}/instrument/jar"/>
     <property name="lib.dir"       value="lib"/>
-    <!--
-    <property name="ant-lib.dir"   value="ant-lib-alt"/>
-    -->
-    <property name="ant-lib.dir"   value="ant-lib"/>
 
+    <property name="ant-lib.dir"   value="ant-lib-alt"/>
+    <!--
+    <property name="ant-lib.dir"   value="ant-lib"/>
+    -->
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
@@ -39,9 +39,9 @@
     <target name="instrument-classes" description="JavaFlow Instrumentation" depends="compile">
         <!-- You may define "javaflow" class either explicitly or via properties inside library JAR -->
 	<!--
-        <taskdef name="javaflow" classname="org.apache.commons.javaflow.ant.AntRewriteTask" classpathref="ant-lib-classpath"/>
+        <taskdef name="javaflow" classname="org.apache.commons.javaflow.tools.ant.ContinuableClassesInstrumentationTask" classpathref="ant-lib-classpath"/>
 	-->
-        <taskdef resource="org/apache/commons/javaflow/ant/tasks.properties" classpathref="ant-lib-classpath"/>
+        <taskdef resource="org/apache/commons/javaflow/tools/ant/tasks.properties" classpathref="ant-lib-classpath"/>
 	<echo message="JavaFlow instrumentation of compiled classes in ${classes.dir}" />
         <javaflow srcdir="${classes.dir}" destdir="${i-classes.dir}" classpathref="classpath"/>
     </target>
@@ -61,7 +61,7 @@
     </target>
 
     <target name="instrument-jar" description="JavaFlow Instrumentation" depends="jar">
-        <taskdef name="javaflow" classname="org.apache.commons.javaflow.ant.AntRewriteTask" classpathref="ant-lib-classpath"/>
+        <taskdef name="javaflow" classname="org.apache.commons.javaflow.tools.ant.ContinuableClassesInstrumentationTask" classpathref="ant-lib-classpath"/>
 	<echo message="JavaFlow instrumentation of compiled classes in ${jar.dir}/${ant.project.name}.jar" />
         <javaflow srcdir="${jar.dir}" destdir="${i-jar.dir}" classpathref="classpath"/>
     </target>
