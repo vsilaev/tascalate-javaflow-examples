@@ -16,7 +16,7 @@
 module net.tascalate.javaflow.examples.trampoline {
     requires net.tascalate.javaflow.api;
     requires net.tascalate.javaflow.tools.runtime;
-    requires net.tascalate.javaflow.providers.asmx;
+    requires net.tascalate.javaflow.providers.core;
     
     // The package MUST be opened unconditionally for unnamed modules
     // Otherwise after the trampoline execution it will not be accessible

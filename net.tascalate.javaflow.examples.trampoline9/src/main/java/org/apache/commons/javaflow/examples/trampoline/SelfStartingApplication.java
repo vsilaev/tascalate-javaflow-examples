@@ -17,13 +17,13 @@ package org.apache.commons.javaflow.examples.trampoline;
 
 import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.api.continuable;
-import org.apache.commons.javaflow.providers.asmx.AsmxResourceTransformationFactory;
+import org.apache.commons.javaflow.providers.core.ContinuableClassTransformationFactory;
 import org.apache.commons.javaflow.tools.runtime.ApplicationWeaver;
 
 public class SelfStartingApplication {
     
     public @continuable static void main(String[] argv) {
-        if (ApplicationWeaver.bootstrap(new AsmxResourceTransformationFactory(), true, argv)) {
+        if (ApplicationWeaver.bootstrap(new ContinuableClassTransformationFactory(), true, argv)) {
             System.out.println("Application was forked in continuations-enabled mode, this method is exiting");
             return;
         }

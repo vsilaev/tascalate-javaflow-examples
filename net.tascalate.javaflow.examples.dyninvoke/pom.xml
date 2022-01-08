@@ -26,7 +26,7 @@
 		<!-- Next 3 are only for DynamicInvoker -->
 		<dependency>
 			<groupId>net.tascalate.javaflow</groupId>
-			<artifactId>net.tascalate.javaflow.providers.asmx</artifactId>
+			<artifactId>net.tascalate.javaflow.providers.core</artifactId>
 			<version>${tascalate.javaflow.version}</version>
 		</dependency>
 		<dependency>
