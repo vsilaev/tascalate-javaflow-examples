@@ -12,6 +12,7 @@
     <!--
     <property name="ant-lib.dir"   value="ant-lib"/>
     -->
+
     <path id="classpath">
         <fileset dir="${lib.dir}" includes="**/*.jar"/>
     </path>
