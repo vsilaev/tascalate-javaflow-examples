@@ -39,9 +39,9 @@
     <!-- USE 3 taskdef below to instrument classes before packaging or when packaging is unnecessary --> 
     <target name="instrument-classes" description="JavaFlow Instrumentation" depends="compile">
         <!-- You may define "javaflow" class either explicitly or via properties inside library JAR -->
-	<!--
+        <!--
         <taskdef name="javaflow" classname="org.apache.commons.javaflow.tools.ant.ContinuableClassesInstrumentationTask" classpathref="ant-lib-classpath"/>
-	-->
+        -->
         <taskdef resource="org/apache/commons/javaflow/tools/ant/tasks.properties" classpathref="ant-lib-classpath"/>
 	<echo message="JavaFlow instrumentation of compiled classes in ${classes.dir}" />
         <javaflow srcdir="${classes.dir}" destdir="${i-classes.dir}" classpathref="classpath"/>

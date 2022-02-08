@@ -17,7 +17,7 @@ package org.apache.commons.javaflow.examples.invokedynamic;
 
 import org.apache.commons.javaflow.api.Continuation;
 import org.apache.commons.javaflow.providers.core.ContinuableClassTransformationFactory;
-import org.apache.commons.javaflow.tools.runtime.ContinuableClassLoader;
+import org.apache.commons.javaflow.tools.runtime.ResourceTransformingClassLoader;
 
 import org.objectweb.asm.MethodVisitor;
 import org.objectweb.asm.Type;
@@ -46,7 +46,7 @@ public class DynamicInvokerExample {
         byte[] dynamicClassBytes = generator.generateInvokeDynamicRunnable(dynamicInvokerClassName,
                 Type.getType(SimpleDynamicLinkage.class).getInternalName(), "bootstrapDynamic", "()V");
 
-        ContinuableClassLoader delegateClassLoader = new ContinuableClassLoader(
+        ResourceTransformingClassLoader delegateClassLoader = new ResourceTransformingClassLoader(
             DynamicInvokerExample.class.getClassLoader(), new ContinuableClassTransformationFactory()
         );
 
