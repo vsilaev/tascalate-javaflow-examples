@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="net.tascalate.javaflow.examples.lambdas" basedir="." default="all">
     <property name="src.dir"       value="src/main/java"/>
+    <property name="resources.dir" value="src/main/resources"/>
     <property name="build.dir"     value="target"/>
     <property name="classes.dir"   value="${build.dir}/classes"/>
     <property name="i-classes.dir" value="${build.dir}/instrument/classes"/>
@@ -45,7 +46,9 @@
 
     <target name="jar" depends="instrument-classes">
         <mkdir dir="${jar.dir}"/>
-        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${i-classes.dir}"/>
+        <jar destfile="${jar.dir}/${ant.project.name}.jar" basedir="${i-classes.dir}">
+            <fileset dir="${resources.dir}" />
+        </jar> 
     </target>
 
     <target name="all" depends="clean,jar"/>
