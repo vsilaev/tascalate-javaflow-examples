@@ -3,7 +3,7 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.1.3</version>
+	<version>1.1.4</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
