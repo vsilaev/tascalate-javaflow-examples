@@ -1,0 +1,37 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.3'
+    }
+}
+
+apply plugin: "java"
+apply plugin: "continuations"
+apply plugin: "application"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.3'
+    implementation 'cglib:cglib:3.3.0'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+group = 'net.tascalate.javaflow.examples'
+version = '1.1.5'
+description = 'Tascalate JavaFlow Examples / Common'
+java.sourceCompatibility = JavaVersion.VERSION_1_6
+
+application {
+    applicationDefaultJvmArgs = ['-javaagent:../javaflow.instrument-proxies.jar']
+    mainClass = 'org.apache.commons.javaflow.examples.cglib.CgLibExample'
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
