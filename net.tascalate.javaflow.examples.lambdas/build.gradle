@@ -1,0 +1,43 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.3'
+    }
+}
+
+apply plugin: "java"
+apply plugin: "continuations"
+apply plugin: "application"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.3'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.extras:2.4.3'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+group = 'net.tascalate.javaflow.examples'
+version = '1.1.5'
+description = 'Tascalate JavaFlow Examples / Lambdas'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+application {
+    applicationDefaultJvmArgs = ['-javaagent:../javaflow.instrument-continuations.jar']
+    mainClass = 'org.apache.commons.javaflow.examples.lambdas.LambdasExample'
+    /*
+    mainClass = 'org.apache.commons.javaflow.examples.lambdas.LambdasExample'
+    mainClass = 'org.apache.commons.javaflow.examples.lambdas.LambdasExampleMinimalIterator'
+    mainClass = 'org.apache.commons.javaflow.examples.lambdas.LambdasExampleMinimalLoop'
+    mainClass = 'org.apache.commons.javaflow.examples.lambdas.LambdasExampleMinimalStream'
+    */
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
