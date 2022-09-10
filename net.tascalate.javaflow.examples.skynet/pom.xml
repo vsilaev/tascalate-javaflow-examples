@@ -11,7 +11,7 @@
 	<artifactId>net.tascalate.javaflow.examples.skynet</artifactId>
 	<packaging>jar</packaging>
 
-	<name>Tascalate JavaFlow Examples / Common</name>
+	<name>Tascalate JavaFlow Examples / SkyNet</name>
 
 	<properties>
 		<license.header>../HEADER-ORIGINAL.txt</license.header>

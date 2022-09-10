@@ -64,6 +64,7 @@
 		<module>net.tascalate.javaflow.examples.cdi-weld4</module>
 		<module>net.tascalate.javaflow.examples.cdi-owb</module>
 		<module>net.tascalate.javaflow.examples.jee</module>
+		<module>net.tascalate.javaflow.examples.skynet</module>
 		<!--
 		<module>net.tascalate.javaflow.examples.skynet</module>
 		-->
