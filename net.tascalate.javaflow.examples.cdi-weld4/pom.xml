@@ -31,6 +31,10 @@
 			<groupId>org.jboss.weld.se</groupId>
 			<artifactId>weld-se-shaded</artifactId>
 			<version>4.0.3.Final</version>
+			<!-- TRY WITH JDK 11+ BUIDLS -->
+			<!-- 
+			<version>5.0.1.Final</version>
+			-->
 		</dependency>
 		<dependency>
 			<groupId>junit</groupId>

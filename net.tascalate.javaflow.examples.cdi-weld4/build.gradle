@@ -20,6 +20,10 @@ dependencies {
     implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.3'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
     implementation 'org.jboss.weld.se:weld-se-shaded:4.0.3.Final'
+    /*
+    TRY WITH JDK 11+ BUIDLS
+    implementation 'org.jboss.weld.se:weld-se-shaded:5.0.1.Final'
+    */
 
     testImplementation 'junit:junit:4.13.2'
 }
