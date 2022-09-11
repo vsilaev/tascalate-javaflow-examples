@@ -272,7 +272,7 @@
 						</execution>
 					</executions>
 					<configuration>
-						<target>1.8</target>
+						<target>1.6</target>
 					</configuration>
 				</plugin>
 
