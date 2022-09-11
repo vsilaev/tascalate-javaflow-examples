@@ -46,6 +46,12 @@ application {
     */
 }
 
+task copyResources(type: Copy) {
+    from "${projectDir}/src/main/resources"
+    into "${buildDir}/classes/java/main"
+}
+processResources.dependsOn copyResources
+
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
