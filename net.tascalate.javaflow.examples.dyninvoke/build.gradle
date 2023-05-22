@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.3'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.4'
     }
 }
 
@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.3'
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.providers.core:2.7.3'
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.tools.runtime:2.7.3'
-    implementation 'org.ow2.asm:asm:9.3'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.4'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.providers.core:2.7.4'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.tools.runtime:2.7.4'
+    implementation 'org.ow2.asm:asm:9.5'
     testImplementation 'junit:junit:4.13.2'
 }
 
