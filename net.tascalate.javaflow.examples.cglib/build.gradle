@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.4'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.5'
     }
 }
 
@@ -17,13 +17,13 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.4'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.5'
     implementation 'cglib:cglib:3.3.0'
     testImplementation 'junit:junit:4.13.2'
 }
 
 group = 'net.tascalate.javaflow.examples'
-version = '1.1.5'
+version = '1.1.7'
 description = 'Tascalate JavaFlow Examples / CGLib'
 java.sourceCompatibility = JavaVersion.VERSION_1_6
 

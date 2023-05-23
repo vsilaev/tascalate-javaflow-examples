@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.4'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.5'
     }
 }
 
@@ -17,18 +17,18 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.4'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.5'
     implementation 'javax.enterprise:cdi-api:2.0'
     implementation 'javax.annotation:javax.annotation-api:1.3.2'
-    implementation 'org.apache.openwebbeans:openwebbeans-se:2.0.26'
+    implementation 'org.apache.openwebbeans:openwebbeans-se:2.0.27'
 
     testImplementation 'junit:junit:4.13.2'
 }
 
 group = 'net.tascalate.javaflow.examples'
-version = '1.1.5'
+version = '1.1.7'
 description = 'Tascalate JavaFlow Examples / CDI OpenWebBeans'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_1_6
 
 application {
     applicationDefaultJvmArgs = ['-javaagent:../javaflow.instrument-proxies.jar']
