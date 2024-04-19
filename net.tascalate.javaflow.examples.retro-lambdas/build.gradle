@@ -1,0 +1,47 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+          url = uri("https://plugins.gradle.org/m2/")
+        }
+    }
+
+    dependencies {
+      classpath 'me.tatarka:gradle-retrolambda:3.7.1'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.5'
+    }
+}
+
+apply plugin: "java"
+apply plugin: "me.tatarka.retrolambda"
+apply plugin: "continuations"
+apply plugin: "application"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.5'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.extras:2.4.3'
+    testImplementation 'junit:junit:4.13.2'
+}
+
+group = 'net.tascalate.javaflow.examples'
+version = '1.1.7'
+description = 'Tascalate JavaFlow Examples / Retro Lambdas'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+application {
+    mainClassName = 'org.apache.commons.javaflow.examples.retrolambdas.RetroLambdas'
+}
+
+task copyResources(type: Copy) {
+    from "${projectDir}/src/main/resources"
+    into "${buildDir}/classes/java/main"
+}
+processResources.dependsOn copyResources
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}

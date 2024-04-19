@@ -3,7 +3,7 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.1.7</version>
+	<version>1.1.8</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
@@ -72,9 +72,9 @@
 
 
 	<properties>
-                <tascalate.javaflow.version>2.7.5</tascalate.javaflow.version>
+                <tascalate.javaflow.version>2.7.6</tascalate.javaflow.version>
                 <tascalate.javaflow.extras.version>2.4.3</tascalate.javaflow.extras.version>
-                <asm.version>9.5</asm.version>
+                <asm.version>9.7</asm.version>
                 <slf4j.version.legacy>1.8.0-beta4</slf4j.version.legacy>
                 <slf4j.version.modern>2.0.7</slf4j.version.modern>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
