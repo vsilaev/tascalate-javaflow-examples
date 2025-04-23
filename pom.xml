@@ -275,6 +275,7 @@
 					</executions>
 					<configuration>
 						<target>1.6</target>
+						<fork>true</fork>
 					</configuration>
 				</plugin>
 
