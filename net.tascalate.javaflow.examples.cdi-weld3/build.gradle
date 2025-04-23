@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.5'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.8'
     }
 }
 
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.5'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.8'
     implementation 'com.google.code.findbugs:jsr305:3.0.1'
     implementation 'org.jboss.weld.se:weld-se-shaded:3.1.9.Final'
 
@@ -25,7 +25,7 @@ dependencies {
 }
 
 group = 'net.tascalate.javaflow.examples'
-version = '1.1.7'
+version = '1.1.9'
 description = 'Tascalate JavaFlow Examples / CDI Weld 2.X.X-3.X.X'
 java.sourceCompatibility = JavaVersion.VERSION_1_6
 
