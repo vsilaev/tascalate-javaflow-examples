@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.7.8'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.1'
     }
 }
 
@@ -17,16 +17,16 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.7.8'
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.providers.core:2.7.8'
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.tools.runtime:2.7.8'
-    implementation 'org.ow2.asm:asm:9.8'
-    runtimeOnly 'org.slf4j:slf4j-simple:1.8.0-beta4'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.1'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.providers.core:2.8.1'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.tools.runtime:2.8.1'
+    implementation 'org.ow2.asm:asm:9.9.1'
+    //runtimeOnly 'org.slf4j:slf4j-simple:1.8.0-beta4'
     testImplementation 'junit:junit:4.13.2'
 }
 
 group = 'net.tascalate.javaflow.examples'
-version = '1.1.9'
+version = '1.2.0'
 description = 'Tascalate JavaFlow Examples / InvokeDynamic'
 java.sourceCompatibility = JavaVersion.VERSION_1_7
 

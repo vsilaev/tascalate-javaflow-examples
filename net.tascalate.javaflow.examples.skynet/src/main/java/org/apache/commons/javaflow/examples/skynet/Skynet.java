@@ -5,6 +5,11 @@ import org.apache.commons.javaflow.api.*;
 public class Skynet implements Runnable {
 
     public static void main(String[] argv) {
+        // Warmup
+        for (int i = 0; i < 10; i++) {
+            skynet(10000000);
+        }
+
         Long before = System.currentTimeMillis();
         System.out.println(skynet(1000000));
         Long after = System.currentTimeMillis();
@@ -14,7 +19,7 @@ public class Skynet implements Runnable {
     public static long skynet(int n) {
         Fiber f = new Fiber(0, n, 10);
         @SuppressWarnings("unused")
-        Continuation c = Continuation.startWith(f);
+        Continuation c = Continuation.startWith(f, true);
         return f.res;
     }
 
@@ -44,7 +49,7 @@ class Fiber implements Runnable {
             long subNum = num + i * (size / div);
             Fiber f = new Fiber(subNum, size / div, div);
             @SuppressWarnings("unused")
-            Continuation c = Continuation.startWith(f);
+            Continuation c = Continuation.startWith(f, true);
             sum += f.res;
         }
         res = sum;

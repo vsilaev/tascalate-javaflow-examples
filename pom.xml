@@ -3,12 +3,12 @@
 
 	<groupId>net.tascalate.javaflow.examples</groupId>
 	<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
-	<version>1.1.9</version>
+	<version>1.2.0</version>
 	<packaging>pom</packaging>
 
 	<name>Tascalate JavaFlow Examples</name>
 	<url>https://github.com/vsilaev/tascalate-javaflow-examples</url>
-	<description>Examples for Tascalate Continuations / CoRoutines library for Java 1.6 - 11</description>
+	<description>Examples for Tascalate Continuations / CoRoutines library for Java 1.6 - 25</description>
 
 	<licenses>
 		<license>
@@ -62,7 +62,8 @@
 		<module>net.tascalate.javaflow.examples.cglib</module>
 		<module>net.tascalate.javaflow.examples.cdi-weld3</module>
 		<module>net.tascalate.javaflow.examples.cdi-weld4</module>
-		<module>net.tascalate.javaflow.examples.cdi-owb</module>
+		<module>net.tascalate.javaflow.examples.cdi-owb2</module>
+		<module>net.tascalate.javaflow.examples.cdi-owb4</module>
 		<module>net.tascalate.javaflow.examples.jee</module>
 		<module>net.tascalate.javaflow.examples.skynet</module>
 		<!--
@@ -72,9 +73,9 @@
 
 
 	<properties>
-                <tascalate.javaflow.version>2.7.8</tascalate.javaflow.version>
+                <tascalate.javaflow.version>2.8.1</tascalate.javaflow.version>
                 <tascalate.javaflow.extras.version>2.4.5</tascalate.javaflow.extras.version>
-                <asm.version>9.8</asm.version>
+                <asm.version>9.9.1</asm.version>
                 <slf4j.version.legacy>1.8.0-beta4</slf4j.version.legacy>
                 <slf4j.version.modern>2.0.7</slf4j.version.modern>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -115,36 +116,23 @@
 	<distributionManagement>
 		<snapshotRepository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<url>https://central.sonatype.com/snapshots</url>
 		</snapshotRepository>
 		<repository>
 			<id>ossrh</id>
-			<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+			<url>https://central.sonatype.com</url>
 		</repository>
 	</distributionManagement>
 
 	<profiles>
 		<profile>
 			<id>release</id>
-			<pluginRepositories>
-				<pluginRepository>
-					<id>maven-snapshots</id>
-					<name>Apache Maven Snapshots</name>
-					<url>https://repository.apache.org/content/repositories/snapshots/</url>
-					<releases>
-						<enabled>false</enabled>
-					</releases>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</pluginRepository>
-			</pluginRepositories>
 			<build>
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-source-plugin</artifactId>
-						<version>3.3.1</version>
+						<version>3.4.0</version>
 						<executions>
 							<execution>
 								<id>attach-sources</id>
@@ -157,7 +145,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.11.2</version>
+						<version>3.12.0</version>
 						<executions>
 							<execution>
 								<id>attach-javadocs</id>
@@ -174,7 +162,7 @@
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-gpg-plugin</artifactId>
-						<version>3.2.7</version>
+						<version>3.2.8</version>
 						<executions>
 							<execution>
 								<id>sign-artifacts</id>
@@ -214,20 +202,18 @@
 			</plugin>
 			-->
 			<plugin>
-				<groupId>org.sonatype.plugins</groupId>
-				<artifactId>nexus-staging-maven-plugin</artifactId>
-				<version>1.7.0</version>
+				<groupId>org.sonatype.central</groupId>
+				<artifactId>central-publishing-maven-plugin</artifactId>
+				<version>0.9.0</version>
 				<extensions>true</extensions>
 				<configuration>
-					<serverId>ossrh</serverId>
-					<nexusUrl>https://oss.sonatype.org/</nexusUrl>
-					<autoReleaseAfterClose>false</autoReleaseAfterClose>
+					<publishingServerId>ossrh</publishingServerId>
 				</configuration>
-			</plugin> 
+			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.14.0</version>
+				<version>3.14.1</version>
 				<configuration>
 					<source>1.6</source>
 					<target>1.6</target>
@@ -236,17 +222,17 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.7.1</version>
+				<version>3.8.0</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>3.4.0</version>
+				<version>3.5.1</version>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.5.3</version>
+				<version>3.5.4</version>
 				<configuration>
 					<includes>
 						<include>**/*TestSuite.java</include>

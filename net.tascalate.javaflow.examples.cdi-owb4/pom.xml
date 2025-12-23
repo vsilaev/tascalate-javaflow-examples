@@ -1,0 +1,112 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>net.tascalate.javaflow.examples</groupId>
+		<artifactId>net.tascalate.javaflow.examples.parent</artifactId>
+		<version>1.2.0</version>
+		<relativePath>../</relativePath>
+	</parent>
+
+	<artifactId>net.tascalate.javaflow.examples.cdi-owb4</artifactId>
+	<packaging>jar</packaging>
+
+	<name>Tascalate JavaFlow Examples / CDI OpenWebBeans 4.x</name> 
+
+	<properties>
+		<license.header>../HEADER-ORIGINAL.txt</license.header>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>net.tascalate.javaflow</groupId>
+			<artifactId>net.tascalate.javaflow.api</artifactId>
+		</dependency>
+	
+		<!-- CDI API -->
+		<dependency>
+			<groupId>jakarta.platform</groupId>
+			<artifactId>jakarta.jakartaee-api</artifactId>
+			<version>10.0.0</version>
+			<scope>provided</scope>
+		</dependency>
+    
+		<!-- OpenWebBeans Core -->
+		<dependency>
+			<groupId>org.apache.openwebbeans</groupId>
+			<artifactId>openwebbeans-impl</artifactId>
+			<version>4.0.3</version>
+		</dependency>
+		
+		<!-- OpenWebBeans Implementation -->
+		<dependency>
+			<groupId>org.apache.openwebbeans</groupId>
+			<artifactId>openwebbeans-se</artifactId>
+			<version>4.0.3</version> <!-- Use the appropriate OWB 4.x.x version -->
+		</dependency>
+
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<!--
+					<debug>false</debug>
+					-->
+				</configuration>
+				<executions>
+					<execution>
+						<id>default-compile</id>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+						<configuration>
+							<jdkToolchain>
+								<version>11</version>
+								<vendor>Oracle</vendor>
+							</jdkToolchain>
+						</configuration>
+					</execution> 
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>net.tascalate.javaflow</groupId>
+				<artifactId>net.tascalate.javaflow.tools.maven</artifactId>
+			</plugin>
+		</plugins>
+		<pluginManagement>
+			<plugins>
+			<plugin>
+
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>attach-javadocs</id>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+						<configuration>
+							<jdkToolchain>
+								<version>11</version>
+								<vendor>Oracle</vendor>
+							</jdkToolchain>
+							<release>11</release>
+						</configuration>	
+					</execution>
+				</executions>
+			</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>
