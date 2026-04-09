@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.3'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.4'
     }
 }
 
@@ -17,7 +17,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.3'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.4'
     implementation 'org.jboss.weld.se:weld-se-shaded:4.0.3.Final'
 
     /*
