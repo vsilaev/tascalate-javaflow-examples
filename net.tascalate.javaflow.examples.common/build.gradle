@@ -1,6 +1,5 @@
 buildscript {
     repositories {
-            mavenLocal()
         mavenCentral()
     }
 
@@ -14,7 +13,6 @@ apply plugin: "continuations"
 apply plugin: "application"
 
 repositories {       
-mavenLocal()
     mavenCentral()
 }
 
