@@ -1,10 +1,11 @@
 buildscript {
     repositories {
+            mavenLocal()
         mavenCentral()
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.5'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.6'
     }
 }
 
@@ -12,12 +13,13 @@ apply plugin: "java"
 apply plugin: "continuations"
 apply plugin: "application"
 
-repositories {
+repositories {       
+mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.5'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.6'
     testImplementation 'junit:junit:4.13.2'
 }
 
@@ -29,6 +31,7 @@ java.sourceCompatibility = JavaVersion.VERSION_1_8
 application {
     mainClass = 'org.apache.commons.javaflow.examples.common.simple.SimpleExample'
     /*
+    mainClass = 'org.apache.commons.javaflow.examples.common.foreach.ForEachExample'
     mainClass = 'org.apache.commons.javaflow.examples.common.again.AgainExample'
     mainClass = 'org.apache.commons.javaflow.examples.common.cancel.CancelExample'
     mainClass = 'org.apache.commons.javaflow.examples.common.inheritance.InheritanceExample'
