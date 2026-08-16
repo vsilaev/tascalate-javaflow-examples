@@ -1,6 +1,7 @@
 package org.apache.commons.javaflow.examples.skynet;
 
-import org.apache.commons.javaflow.api.*;
+import org.apache.commons.javaflow.api.Continuation;
+import org.apache.commons.javaflow.api.continuable;
 
 public class Skynet implements Runnable {
 

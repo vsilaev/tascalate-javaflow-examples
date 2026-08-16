@@ -1,1 +1,15 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        mavenCentral()
+        mavenLocal()
+    }
+	resolutionStrategy {
+        eachPlugin {
+            if (requested.id.id == "continuations") {
+                useModule("net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.9.0")
+            }
+        }
+    }
+}
 rootProject.name='net.tascalate.javaflow.examples.skynet'

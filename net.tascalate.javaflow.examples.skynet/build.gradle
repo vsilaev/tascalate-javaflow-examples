@@ -1,41 +1,51 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-
-    dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.6'
-    }
-}
-
-apply plugin: "java"
-apply plugin: "continuations"
-apply plugin: "application"
-
-repositories {
-    mavenCentral()
-}
-
-dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.6'
-    testImplementation 'junit:junit:4.13.2'
+plugins {
+    id 'java'
+    id 'application'
+    // The continuations plugin is loaded via the buildscript classpath below
+    // The next plugin is required for classic Tascalate JavaFlow
+    // Keep it commented out to test with Project Loom Continuations
+    //id 'continuations' 
 }
 
 group = 'net.tascalate.javaflow.examples'
 version = '1.2.0'
 description = 'Tascalate JavaFlow Examples / SkyNet'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+java {
+    // Modern block syntax replacing java.sourceCompatibility/targetCompatibility
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    // This version is required for Project Loom Continuations
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api-jvmc:2.9.0'
+    // Replace with a dependency below for classic Tascalate JavaFlow
+    /*
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.9.0'
+    */
+    testImplementation 'junit:junit:4.13.2'
+}
 
 application {
     mainClass = 'org.apache.commons.javaflow.examples.skynet.SkynetSuspend'
 }
 
-tasks.withType(JavaCompile) {
+tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8'
 }
 
-tasks.withType(JavaExec) {
-    //jvmArgs += '--enable-preview'
+tasks.withType(JavaExec).configureEach {
+    // You may keep args unchanged for any test
+    jvmArgs([
+        '--enable-preview',
+        '--add-exports=java.base/jdk.internal.vm=net.tascalate.javaflow.api',
+        '--add-exports=java.base/jdk.internal.vm=ALL-UNNAMED'
+    ])
 }
-
-

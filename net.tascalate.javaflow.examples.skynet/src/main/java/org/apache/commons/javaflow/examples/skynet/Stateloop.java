@@ -1,10 +1,12 @@
 package org.apache.commons.javaflow.examples.skynet;
 
-// needs to be in this package to have access to `exec`
-
-import org.apache.commons.javaflow.api.*;
-import java.util.concurrent.*;
 import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ThreadLocalRandom;
+
+// needs to be in this package to have access to `exec`
+import org.apache.commons.javaflow.api.Continuation;
+import org.apache.commons.javaflow.api.continuable;
 
 public class Stateloop {
 
@@ -80,7 +82,7 @@ public class Stateloop {
             @continuable public void run() {
                 Continuation.suspend(loopNever(N));
             }
-        });
+        }, true);
         c.value();
         c.resume();
     }
@@ -91,7 +93,7 @@ public class Stateloop {
                 @SuppressWarnings("unused")
                 long res = recursiveOnce(NRecursive);
             }
-        });
+        }, true);
         c.resume();
     }
 
@@ -101,7 +103,7 @@ public class Stateloop {
                 @SuppressWarnings("unused")
                 long res = recursiveOften(NRecursive);
             }
-        });
+        }, true);
         for (int i=0; i < NRecursive; i++) { c = c.resume(); }
     }
 
