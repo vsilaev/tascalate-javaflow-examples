@@ -22,7 +22,7 @@ public class ForEachExample {
 
         String[] strings = {"X", "Y", "Z"};
         int i = 0;
-        for (Continuation cc = Continuation.startWith(new Execution()); null != cc;) {
+        for (Continuation cc = Continuation.startWith(new Execution(), true); null != cc;) {
             System.out.println("Interrupted " + cc.value());
             // Let's continuation resume
             cc = cc.resume(strings[(++i) % strings.length]);
