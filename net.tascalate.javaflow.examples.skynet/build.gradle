@@ -19,11 +19,12 @@ java {
 }
 
 repositories {
-    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+
     // This version is required for Project Loom Continuations
     implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api-jvmc:2.9.0'
     // Replace with a dependency below for classic Tascalate JavaFlow
@@ -44,7 +45,7 @@ tasks.withType(JavaCompile).configureEach {
 tasks.withType(JavaExec).configureEach {
     // You may keep args unchanged for any test
     jvmArgs([
-        '--enable-preview',
+        '--enable-preview',  // Only if youn are using JDK 21-24 and need ScopedValue StackRecorder
         '--add-exports=java.base/jdk.internal.vm=net.tascalate.javaflow.api',
         '--add-exports=java.base/jdk.internal.vm=ALL-UNNAMED'
     ])
