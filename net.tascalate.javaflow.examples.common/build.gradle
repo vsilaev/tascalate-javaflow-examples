@@ -4,7 +4,7 @@ buildscript {
     }
 
     dependencies {
-      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.8.6'
+      classpath 'net.tascalate.javaflow:net.tascalate.javaflow.tools.gradle:2.9.0'
     }
 }
 
@@ -17,7 +17,12 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.8.6'
+    implementation 'net.tascalate.javaflow:net.tascalate.javaflow.api:2.9.0'
+    implementation 'org.slf4j:slf4j-api:2.0.12'
+    // Uncomment to enable logging output
+    /*
+    implementation 'ch.qos.logback:logback-classic:1.4.14'
+    */
     testImplementation 'junit:junit:4.13.2'
 }
 
@@ -55,3 +60,15 @@ processResources.dependsOn copyResources
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
 }
+
+// Only for JVMC continuations
+/*
+tasks.withType(JavaExec) {
+    jvmArgs += '--enable-preview' // Only for JDK21-24 and only if you need ScopedValue current StackRecorder
+    jvmArgs += '--add-exports'
+    jvmArgs += 'java.base/jdk.internal.vm=net.tascalate.javaflow.api'
+    jvmArgs += '--add-exports'
+    jvmArgs += 'java.base/jdk.internal.vm=ALL-UNNAMED'
+
+}
+*/
